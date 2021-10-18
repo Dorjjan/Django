@@ -5,3 +5,4 @@ from api.serializers import UbranieSerializers
 class UbranieViewSets(viewsets.ModelViewSet):
      queryset = Ubranie.objects.all()  
      serializer_class = UbranieSerializers
+     #dupa
