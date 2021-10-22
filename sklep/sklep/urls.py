@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from rest_framework_nested.routers import NestedDefaultRouter
-from api.views import OdziezMeskaViewSets, OdziezDamskaViewSets,TypUbraniaMViewSets, TypUbraniaKViewSets
-from api.views import odziezMeska,odziezDamska, odziezMeskaTyp, index
+from api.views import OdziezMeskaViewSets, OdziezDamskaViewSets
+from api.views import odziezMeska,odziezDamska, index
 
 
 
@@ -12,7 +12,7 @@ router.register('odziezmeska', OdziezMeskaViewSets)
 router.register('odziezdamska', OdziezDamskaViewSets)
 
 nested_router = NestedDefaultRouter(router, 'odziezmeska', lookup='odziezmeska')
-nested_router.register('typubrania', TypUbraniaMViewSets)
+#nested_router.register('typubrania', OdziezMeskaViewSets.Ty)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
