@@ -20,3 +20,12 @@ class TypUbraniaKViewSets(viewsets.ModelViewSet):
 def index(requset):
      query = OdziezMeska,OdziezDamska.objects.all()
      return HttpResponse(query) 
+def odziezMeska(requset):
+     odziezMeska_user = OdziezMeska.objects.all()
+     return HttpResponse(odziezMeska_user)
+def odziezDamska(request):
+     odziezDamska_user = OdziezDamska.objects.all()
+     return HttpResponse(odziezDamska_user)
+def odziezMeskaTyp(request, id):
+     odziezMeskaTyp_user = TypUbraniaM.objects.get(pk=id)
+     return(odziezMeskaTyp_user.typ)

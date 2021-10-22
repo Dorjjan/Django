@@ -1,17 +1,24 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework_nested.routers import NestedDefaultRouter
 from api.views import OdziezMeskaViewSets, OdziezDamskaViewSets,TypUbraniaMViewSets, TypUbraniaKViewSets
-from api.views import index
+from api.views import odziezMeska,odziezDamska, odziezMeskaTyp, index
+
+
 
 router = routers.DefaultRouter()
-router.register(r'users', OdziezMeskaViewSets)
-router.register(r'user', OdziezDamskaViewSets)
-router.register(r'user', TypUbraniaMViewSets)
-router.register(r'user', TypUbraniaKViewSets)
+router.register('odziezmeska', OdziezMeskaViewSets)
+router.register('odziezdamska', OdziezDamskaViewSets)
+
+nested_router = NestedDefaultRouter(router, 'odziezmeska', lookup='odziezmeska')
+nested_router.register('typubrania', TypUbraniaMViewSets)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/', include(router.get_urls())),
+    path('api/', include(nested_router.get_urls())),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
 ]
