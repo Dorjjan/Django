@@ -1,21 +1,13 @@
 from rest_framework import serializers
-from api.models import OdziezMeska, OdziezDamska, TypUbraniaM, TypUbraniaK
+from api.models import MensClothes, WomansClothes
 
 
-class OdziezMeskaSerializers(serializers.ModelSerializer):
+class MensClothesSerializers(serializers.ModelSerializer):
     class Meta:
-        model = OdziezMeska
+        model = MensClothes
         fields = ['nazwa', 'rozmiar', 'cena', 'kolor']
 
-class OdziezDamskaSerializers(serializers.ModelSerializer):
+class WomensClothesSerializers(serializers.ModelSerializer):
     class Meta:
-        model = OdziezDamska
+        model = WomansClothes
         fields= ['nazwa', 'rozmiar', 'cena', 'kolor']
-class TypUbraniaMSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = TypUbraniaM
-        fields = ["typ"]
-class TypUbraniaKSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = TypUbraniaK
-        fields = ["typ"]

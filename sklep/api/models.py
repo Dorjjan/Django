@@ -1,21 +1,19 @@
 from django.db import models
 
-class TypUbraniaM(models.Model):
-    typ = models.CharField(max_length=120)
-    class Meta:
-        verbose_name= "Typ Meski"
-        verbose_name_plural="Typy Meskie"
-class TypUbraniaK(models.Model):
-    typ = models.CharField(max_length=120)
-    class Meta:
-        verbose_name= "Typ Damski"
-        verbose_name_plural="Typy Damskie"
 
-class OdziezMeska(models.Model):
+class MensClothes(models.Model):
     def __str__(self):
         return self.nazwa
+    class TypeMensClothes(models.TextChoices):
+        SPODENKI = 'SX', ('Spodenki')
+        JOGGERY = 'JX', ('Joggery')
+        BLUZY = 'BX', ('Bluzy')
+    type_mens_clothes =models.CharField(
+        max_length=100,
+        choices=TypeMensClothes.choices,
+        default=TypeMensClothes.SPODENKI
+     )        
     
-    typM = models.ForeignKey(TypUbraniaM, on_delete=models.CASCADE, null=True)
     
     nazwa = models.CharField(max_length=120)
     rozmiar = models.CharField(max_length=4)
@@ -27,11 +25,19 @@ class OdziezMeska(models.Model):
         verbose_name="Odziez Meska"
         verbose_name_plural="Odziez Meska"
 
-class OdziezDamska(models.Model):
+class WomansClothes(models.Model):
     def __str__(self):
         return self.nazwa
     
-    typ = models.ForeignKey(TypUbraniaK, on_delete=models.CASCADE, null=True)
+    class TypeWomensClothes(models.TextChoices):
+        SPODENKI = 'SY', ('Spodenki')
+        SUKIENKI = 'CY', ('Joggery')
+        BUTY = 'BY', ('Bluzy')
+    type_womens_clothes =models.CharField(
+        max_length=100,
+        choices=TypeWomensClothes.choices,
+        default=TypeWomensClothes.SPODENKI
+     )   
    
     nazwa = models.CharField(max_length=120)
     rozmiar = models.CharField(max_length=4)
