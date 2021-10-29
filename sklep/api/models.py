@@ -1,18 +1,7 @@
 from django.db import models
 
 
-#class TypUbraniaM(models.Model):
-#    typ = models.CharField(max_length=120)
-#    class Meta:
-#        verbose_name= "Typ Meski"
- #      verbose_name_plural="Typy Meskie"
-#class TypUbraniaK(models.Model):
- #   typ = models.CharField(max_length=120)
- #   class Meta:
- #       verbose_name= "Typ Damski"
- #       verbose_name_plural="Typy Damskie"
-
-class OdziezMeska(models.Model):
+class MensClothes(models.Model):
     def __str__(self):
         return self.nazwa
     class TypeMensClothes(models.TextChoices):
@@ -22,7 +11,7 @@ class OdziezMeska(models.Model):
     type_mens_clothes =models.CharField(
         max_length=100,
         choices=TypeMensClothes.choices,
-        default=''
+        default=TypeMensClothes.SPODENKI
      )        
     
     
@@ -36,7 +25,7 @@ class OdziezMeska(models.Model):
         verbose_name="Odziez Meska"
         verbose_name_plural="Odziez Meska"
 
-class OdziezDamska(models.Model):
+class WomansClothes(models.Model):
     def __str__(self):
         return self.nazwa
     
@@ -47,7 +36,7 @@ class OdziezDamska(models.Model):
     type_womens_clothes =models.CharField(
         max_length=100,
         choices=TypeWomensClothes.choices,
-        default=''
+        default=TypeWomensClothes.SPODENKI
      )   
    
     nazwa = models.CharField(max_length=120)

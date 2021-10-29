@@ -1,23 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from api.models import OdziezMeska, OdziezDamska
+from api.models import MensClothes, WomansClothes
 from rest_framework import serializers, views, viewsets
-from api.serializers import OdziezMeskaSerializers, OdziezDamskaSerializers
-class OdziezMeskaViewSets(viewsets.ModelViewSet):
-     queryset = OdziezMeska.objects.all()  
-     serializer_class = OdziezMeskaSerializers
+from api.serializers import MensClothesSerializers, WomensClothesSerializers
+class MensClothesViewSets(viewsets.ModelViewSet):
+     queryset = MensClothes.objects.all()  
+     serializer_class = MensClothesSerializers
 
-class OdziezDamskaViewSets(viewsets.ModelViewSet):
-     queryset = OdziezDamska.objects.all()
-     serializer_class = OdziezDamskaSerializers
+class WomensClothesViewSets(viewsets.ModelViewSet):
+     queryset = WomansClothes.objects.all()
+     serializer_class = WomensClothesSerializers
 
 
 def index(requset):
-     query = OdziezMeska,OdziezDamska.objects.all()
+     query = MensClothes,WomansClothes.objects.all()
      return HttpResponse(query) 
 def odziezMeska(requset):
-     odziezMeska_user = OdziezMeska.objects.all()
+     odziezMeska_user = MensClothes.objects.all()
      return HttpResponse(odziezMeska_user)
 def odziezDamska(request):
-     odziezDamska_user = OdziezDamska.object.all()
+     odziezDamska_user = WomansClothes.objects.all()
      return HttpResponse(odziezDamska_user)

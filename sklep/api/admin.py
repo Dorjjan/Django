@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import OdziezMeska, OdziezDamska
+from .models import MensClothes, WomansClothes
 # Register your models here.
-admin.site.register(OdziezMeska)
-admin.site.register(OdziezDamska)
+admin.site.register(MensClothes)
+admin.site.register(WomansClothes)
 
 

@@ -2,14 +2,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from rest_framework_nested.routers import NestedDefaultRouter
-from api.views import OdziezMeskaViewSets, OdziezDamskaViewSets
+from api.views import MensClothesViewSets, WomensClothesViewSets
 from api.views import odziezMeska,odziezDamska, index
 
 
 
 router = routers.DefaultRouter()
-router.register('odziezmeska', OdziezMeskaViewSets)
-router.register('odziezdamska', OdziezDamskaViewSets)
+router.register('odziezmeska', MensClothesViewSets)
+router.register('odziezdamska', WomensClothesViewSets)
 
 nested_router = NestedDefaultRouter(router, 'odziezmeska', lookup='odziezmeska')
 #nested_router.register('typubrania', OdziezMeskaViewSets.Ty)
