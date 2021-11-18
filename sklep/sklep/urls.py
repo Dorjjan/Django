@@ -12,7 +12,10 @@ router.register('odziezmeska', MensClothesViewSets)
 router.register('odziezdamska', WomensClothesViewSets)
 
 nested_router = NestedDefaultRouter(router, 'odziezmeska', lookup='odziezmeska')
-#nested_router.register('typubrania', OdziezMeskaViewSets.Ty)
+nested_router.register('typubraniam', MensClothesViewSets, basename='typubraniam')
+
+nested_router = NestedDefaultRouter(router, 'odziezdamska', lookup='odziezdamska')
+nested_router = NestedDefaultRouter('typubraniak', WomensClothesViewSets, basename='typubraniak')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
